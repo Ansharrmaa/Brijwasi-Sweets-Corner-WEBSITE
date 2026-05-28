@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+
+<script>
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+  var errorDiv = document.createElement('div');
+  errorDiv.style.position = 'fixed';
+  errorDiv.style.top = '0';
+  errorDiv.style.left = '0';
+  errorDiv.style.width = '100%';
+  errorDiv.style.background = 'red';
+  errorDiv.style.color = 'white';
+  errorDiv.style.zIndex = '999999';
+  errorDiv.style.padding = '20px';
+  errorDiv.style.fontSize = '20px';
+  errorDiv.innerHTML = 'JS ERROR: ' + msg + ' at line ' + lineNo;
+  document.body.appendChild(errorDiv);
+  return false;
+};
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brijwasi Sweets Corner — Surajpur, Greater Noida</title>
+<meta name="description" content="Brijwasi Sweets Corner, Surajpur, Greater Noida — Family-owned authentic sweet shop founded by Sh. Ramdev Upadhyay. 20+ years of handcrafted sweets with pure desi ghee. Order Kaju Katli, Gulab Jamun, Barfi and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Devanagari:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- FESTIVAL OFFER BANNER -->
+<div class="fest-banner" id="festBanner">
+  <div class="fest-inner">
+    <span class="fest-sparkle">✨</span>
+    <span class="fest-text"><strong>Diwali Special!</strong> &nbsp;—&nbsp; Kaju Katli par <span class="fest-highlight">10% OFF</span> &nbsp;|&nbsp; Hurry, limited period offer! &nbsp;🪔🎉</span>
+    <span class="fest-sparkle">✨</span>
+  </div>
+  <button class="fest-close" onclick="closeBanner()" title="Close">&times;</button>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="wa-float" href="#" onclick="openWhatsApp(event)" title="Order on WhatsApp">
+  <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-text">Order on WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="images/logo.jpg" alt="Brijwasi Sweet Corner Logo" class="nav-logo-img">
+    <div class="nav-brand">Brijwasi Sweets Corner<span>Greater Noida · Est. 20+ Yrs</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#specials">Specials</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#giftcalc">Gift Box</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="order.html">Order</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn" title="Translate / अनुवाद">अ/A</button>
+  <button class="nav-order-btn" onclick="window.location.href='order.html'" data-i18n="orderNow">Order Now</button>
+</nav>
+
+
+<!-- HERO CAROUSEL -->
+<div class="hero-carousel" id="heroCarousel">
+  <div class="carousel-slide active" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-diwali.png');">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Diwali Special ✦</div>
+      <h1>Festive <em>Gifting</em></h1>
+      <p class="hero-tagline">Premium traditional sweets for your loved ones.</p>
+      <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+    </div>
+  </div>
+  <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-corporate.png');">
+    <div class="hero-content">
+      <div class="hero-badge">✦ Corporate Orders ✦</div>
+      <h1>Luxury <em>Boxes</em></h1>
+      <p class="hero-tagline">Customized sweet boxes for your business needs.</p>
+      <button class="btn-primary" onclick="document.getElementById('giftcalc').scrollIntoView({behavior:'smooth'})">Plan Gifts</button>
+    </div>
+  </div>
+    <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-wedding.png');">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Wedding ✦</div>
+        <h1>Grand <em>Celebrations</em></h1>
+        <p class="hero-tagline">Make your wedding unforgettable with our premium sweets.</p>
+        <button class="btn-primary" onclick="document.getElementById('giftcalc').scrollIntoView({behavior:'smooth'})">Plan Gifts</button>
+      </div>
+    </div>
+    <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-birthday.png');">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Birthday ✦</div>
+        <h1>Sweet <em>Memories</em></h1>
+        <p class="hero-tagline">Celebrate special moments with joy and sweetness.</p>
+        <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Order Now</button>
+      </div>
+    </div>
+    <div class="carousel-slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/banner-puja.png');">
+      <div class="hero-content">
+        <div class="hero-badge">✦ Puja ✦</div>
+        <h1>Sacred <em>Offerings</em></h1>
+        <p class="hero-tagline">Pure desi ghee sweets for your divine ceremonies.</p>
+        <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Order Now</button>
+      </div>
+    </div>
+    <div class="carousel-nav">
+      <button onclick="changeSlide(-1)">&#10094;</button>
+      <button onclick="changeSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">39+</div><div class="stat-label">Varieties</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Pure Desi Ghee</div></div>
+  <div class="stat"><div class="stat-num">Daily</div><div class="stat-label">Fresh Made</div></div>
+  <div class="stat"><div class="stat-num">₹220</div><div class="stat-label">Starting /kg</div></div>
+</div>
+
+<!-- DELIVERY PARTNERS -->
+<div class="delivery-partners">
+  <div class="dp-text">Now delivering across <strong>Noida & Greater Noida</strong> via</div>
+  <div class="dp-logos">
+    <span class="dp-badge zomato">Zomato</span>
+    <span class="dp-badge swiggy">Swiggy</span>
+    <span class="dp-badge blinkit">Blinkit</span>
+  </div>
+</div>
+
+<!-- MENU -->
+<section id="menu" class="menu-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Our Menu / हमारा मेनू</h2>
+    <p>Freshly prepared every day with the finest ingredients</p>
+  </div>
+  <!-- Live Search -->
+  <div class="menu-search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="menuSearch" class="menu-search" placeholder="Type to search — kaju, ladoo, barfi..." autocomplete="off">
+    <button class="search-clear" id="searchClear" onclick="clearSearch()" title="Clear search">✕</button>
+  </div>
+  <div class="filter-tabs">
+    <button class="tab active" onclick="filterMenu('all',this)">All / सभी</button>
+    <button class="tab fav-tab" onclick="filterMenu('fav',this)">❤️ Favorites</button>
+    <button class="tab" onclick="filterMenu('jamun',this)">Jamun जामुन</button>
+    <button class="tab" onclick="filterMenu('barfi',this)">Barfi बर्फी</button>
+    <button class="tab" onclick="filterMenu('ladoo',this)">Ladoo लड्डू</button>
+    <button class="tab" onclick="filterMenu('snack',this)">Snacks नाश्ता</button>
+   <button class="tab" onclick="filterMenu('namkeen',this)">Namkeen नमकीन</button>
+   <button class="tab" onclick="filterMenu('sugarfree',this)">Sugar-Free</button>
+    <button class="tab" onclick="filterMenu('piece',this)">Per Piece पीस</button>
+  </div>
+  <div class="menu-grid" id="menuGrid"></div>
+</section>
+
+<!-- SPECIALS -->
+<section id="specials" class="specials-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Today's Specials</h2>
+    <p>Per piece freshly made — perfect for any occasion</p>
+  </div>
+  <div class="specials-grid">
+    <div class="special-card"><span class="s-emoji">🍮</span><h3>Rasmalai</h3><p>Soft chhena balls in rich saffron rabri, garnished with pistachios</p><span class="s-price">₹40 / piece</span></div>
+    <div class="special-card"><span class="s-emoji">🟠</span><h3>Rajbhog</h3><p>Saffron-flavored large rasgulla stuffed with dry fruits</p><span class="s-price">₹35 / piece</span></div>
+    <div class="special-card"><span class="s-emoji">🥛</span><h3>Chhena Payas</h3><p>Classic chhena payas in sweet thickened milk with cardamom</p><span class="s-price">₹45 / piece</span></div>
+    <div class="special-card"><span class="s-emoji">🔶</span><h3>Samosa</h3><p>Crispy golden samosa with spiced potato filling & green chutney</p><span class="s-price">₹20 / piece</span></div>
+    <div class="special-card"><span class="s-emoji">🥙</span><h3>Bread Pakoda</h3><p>Golden crispy bread pakoda with green chutney on the side</p><span class="s-price">₹35 / piece</span></div>
+    <div class="special-card"><span class="s-emoji">🌙</span><h3>Khasta Kachori</h3><p>Flaky kachori with spiced dal filling, best with tamarind chutney</p><span class="s-price">₹25 / piece</span></div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section id="gallery" class="gallery-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Our Gallery / हमारी गैलरी</h2>
+    <p>A visual feast — our sweets, our shop, our festivals</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item" onclick="openLightbox(0)">
+      <img src="images/shop-exterior.jpg" alt="Brijwasi Sweet Corner Exterior" loading="lazy">
+      <div class="gallery-overlay"><span>🏪</span><p>Shop Exterior</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(1)">
+      <img src="images/shop-interior.jpg" alt="Brijwasi Sweet Corner Interior" loading="lazy">
+      <div class="gallery-overlay"><span>✨</span><p>Shop Interior</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(2)">
+      <img src="images/gallery-1.png" alt="Sweet Shop Display" loading="lazy">
+      <div class="gallery-overlay"><span>🍬</span><p>Sweet Shop Display</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(3)">
+      <img src="images/gallery-2.png" alt="Gift Boxes Collection" loading="lazy">
+      <div class="gallery-overlay"><span>🎁</span><p>Gift Boxes Collection</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(4)">
+      <img src="images/gallery-3.png" alt="Gulab Jamun Close-up" loading="lazy">
+      <div class="gallery-overlay"><span>🟤</span><p>Gulab Jamun</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(5)">
+      <img src="images/gallery-4.png" alt="Kaju Katli Premium" loading="lazy">
+      <div class="gallery-overlay"><span>🥇</span><p>Kaju Katli</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(6)">
+      <img src="images/gallery-5.png" alt="Diwali Festival Setup" loading="lazy">
+      <div class="gallery-overlay"><span>🪔</span><p>Festival Setup</p></div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(7)">
+      <img src="images/gallery-6.png" alt="Rasmalai Closeup" loading="lazy">
+      <div class="gallery-overlay"><span>🍮</span><p>Rasmalai</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lb-close" onclick="closeLightbox(event)">&times;</button>
+  <button class="lb-arrow lb-prev" onclick="lbNav(-1,event)">&#10094;</button>
+  <img class="lb-img" id="lbImg" src="" alt="">
+  <button class="lb-arrow lb-next" onclick="lbNav(1,event)">&#10095;</button>
+  <div class="lb-caption" id="lbCaption"></div>
+</div>
+
+<!-- REVIEWS -->
+<section id="reviews" class="reviews-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Customer Reviews / समीक्षाएं</h2>
+    <p>Hamare pyaare grahak kya kehte hain — hear it from our regulars</p>
+  </div>
+  <div class="reviews-summary">
+    <div class="rs-score">4.9</div>
+    <div>
+      <div class="rs-stars">★★★★★</div>
+      <div class="rs-count">200+ happy customers &amp; counting</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#7B1C2E">RS</div>
+        <div class="rc-meta"><div class="rc-name">Rajesh Sharma</div><div class="rc-location">📍 Alpha-1, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Kaju Katli ekdam lajawaab! Shadion mein hamesha Brijwasi se hi lena padta hai. Quality aur taste dono mein koi compromise nahi."</p>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#9B2B40">PG</div>
+        <div class="rc-meta"><div class="rc-name">Priya Gupta</div><div class="rc-location">📍 Surajpur, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Rasmalai itni soft aur fresh thi! Ramdev ji ke haath ka swad hi alag hai. My whole family's favourite mithai shop in Greater Noida."</p>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#5C3317">AV</div>
+        <div class="rc-meta"><div class="rc-name">Amit Verma</div><div class="rc-location">📍 Pari Chowk, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Best Gulab Jamun I've ever tasted. Ekdum melts in mouth. Desi ghee ka swad hi kuch aur hota hai — must try once!"</p>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#7B1C2E">SS</div>
+        <div class="rc-meta"><div class="rc-name">Sunita Singh</div><div class="rc-location">📍 Knowledge Park, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Diwali mein 20 kg ka bulk order diya tha. Packaging ekdum perfect, delivery on time. Sab log bahut khush the!"</p>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#C9923A">RA</div>
+        <div class="rc-meta"><div class="rc-name">Rohit Agarwal</div><div class="rc-location">📍 Sector Beta, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Roz fresh mithai milti hai yahaan. Barfi aur Peda dono kamaal ke hain. Price bhi reasonable hai quality ke hisaab se!"</p>
+    </div>
+    <div class="review-card">
+      <div class="rc-header">
+        <div class="rc-avatar" style="background:#4A0E1A">KM</div>
+        <div class="rc-meta"><div class="rc-name">Kavita Mishra</div><div class="rc-location">📍 Dadri, Greater Noida</div></div>
+        <div class="rc-stars">★★★★★</div>
+      </div>
+      <p class="rc-text">"Bete ki birthday pe Kaju Kalash li — sabne bohot tarif ki! Pure aur authentic taste. Will always order from here only."</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT BOX CALCULATOR -->
+<section id="giftcalc" class="giftcalc-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Gift Box Calculator / गिफ्ट बॉक्स</h2>
+    <p>Tell us your guests and budget — we'll suggest the perfect sweet box!</p>
+  </div>
+  <div class="gc-card">
+    <div class="gc-inputs">
+      <div class="gc-field">
+        <label>👥 Number of People / कितने लोग</label>
+        <input type="number" id="gcPeople" min="1" max="500" value="10" oninput="calcGiftBox()">
+      </div>
+      <div class="gc-field">
+        <label>💰 Budget per person / प्रति व्यक्ति बजट</label>
+        <select id="gcBudget" onchange="calcGiftBox()">
+          <option value="300">₹300 — Economy</option>
+          <option value="500" selected>₹500 — Standard</option>
+          <option value="800">₹800 — Premium</option>
+          <option value="1200">₹1200 — Royal</option>
+          <option value="2000">₹2000 — Grand</option>
+        </select>
+      </div>
+      <div class="gc-field">
+        <label>🎊 Occasion / अवसर</label>
+        <select id="gcOccasion" onchange="calcGiftBox()">
+          <option value="wedding">Wedding / शादी</option>
+          <option value="diwali" selected>Diwali / दीवाली</option>
+          <option value="birthday">Birthday / जन्मदिन</option>
+          <option value="corporate">Corporate / ऑफिस</option>
+          <option value="puja">Puja / पूजा</option>
+        </select>
+      </div>
+    </div>
+    <div class="gc-result" id="gcResult"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about-section">
+  <div class="about-inner">
+    <div class="about-text">
+      <div class="orn-divider" style="justify-content:flex-start;margin-bottom:1rem;"><span class="orn-dot" style="font-size:14px;">✦</span><div style="flex:0;width:80px;height:1px;background:var(--gold);"></div></div>
+      <h2>Our Story / हमारी कहानी</h2>
+      <p>Welcome to <strong>Brijwasi Sweets Corner</strong> — a beloved family-owned sweet shop in the heart of <strong>Surajpur, Greater Noida</strong>. Founded by <strong>Sh. Ramdev Upadhyay</strong>, our shop has been serving the local community for over <strong>two decades</strong> with authentic, handcrafted sweets.</p>
+      <p>We are passionate about creating high-quality, mouth-watering sweets that you'll love. Our experienced chefs use only the freshest and finest ingredients — because at Brijwasi, every sweet tells a story of tradition, purity, and love.</p>
+      <p style="font-style:italic;color:var(--text-light);font-size:13px;">"Sweets are not just food — they are an integral part of our culture and traditions."</p>
+      <ul class="about-features">
+        <li>Founded by Sh. Ramdev Upadhyay — 20+ years of excellence</li>
+        <li>Pure Desi Ghee used in every preparation</li>
+        <li>Fresh sweets made daily — no preservatives</li>
+        <li>Traditional recipes, authentic flavors</li>
+        <li>Wholesale &amp; catering services available</li>
+        <li>Bulk orders for weddings, festivals &amp; events</li>
+        <li>Custom gift boxes with dry fruits available</li>
+      </ul>
+    </div>
+    <div class="about-visual">
+      <div style="margin-bottom: 1.5rem;"><img src="images/owner.jpg" alt="Sh. Ramdev Upadhyay" style="width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--gold); object-fit: cover; box-shadow: 0 4px 18px rgba(0,0,0,0.35); margin: 0 auto; display: block;"></div>
+      <div class="av-title">शुद्ध · स्वादिष्ट · सात्विक</div>
+      <div class="av-sub">Pure · Delicious · Wholesome</div>
+      <div class="about-highlights">
+        <p>👨‍🍳 Founded by Sh. Ramdev Upadhyay</p>
+        <p>📍 Surajpur, Greater Noida UP 201306</p>
+        <p>⏱️ 20+ Years Serving with Love</p>
+        <p>🥇 Kaju Katli — ₹1200/kg</p>
+        <p>🎁 Custom Gift Boxes Available</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Contact Us / संपर्क करें</h2>
+    <p>Let's Talk Sweets — We're always happy to hear from you!</p>
+  </div>
+
+  <div class="contact-inner">
+
+    <!-- ── Left: Info Panel ── -->
+    <div class="contact-info-col">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <img src="images/logo.jpg" alt="Brijwasi Sweets Logo" style="width: 110px; height: 110px; border-radius: 50%; border: 3px solid var(--gold); object-fit: cover; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin: 0 auto; display: block;">
+      </div>
+      <p class="cic-intro">Contact us for custom orders, wholesale enquiries, catering services, or any questions about our products. Your feedback means the world to us!</p>
+
+      <div class="cic-card">
+        <div class="cic-icon">📍</div>
+        <div class="cic-body">
+          <strong>Our Location</strong>
+          <span>Bus Stop Lakhnawali Road, Dadri Main Rd,<br>Surajpur, Greater Noida, UP 201306</span>
+          <a href="https://share.google/fFUyDDzfoEQeFqvSR" target="_blank" rel="noopener" class="cic-link">View on Google Maps →</a>
+        </div>
+      </div>
+
+      <div class="cic-card">
+        <div class="cic-icon">📞</div>
+        <div class="cic-body">
+          <strong>Phone Number</strong>
+          <span>+91 99105 59158</span>
+          <a href="tel:+919910559158" class="cic-link">Call us now →</a>
+        </div>
+      </div>
+
+      <div class="cic-card">
+        <div class="cic-icon">✉️</div>
+        <div class="cic-body">
+          <strong>Email Address</strong>
+          <span>info@brijwasisweetscorner.in</span>
+          <a href="mailto:info@brijwasisweetscorner.in" class="cic-link">Send us an email →</a>
+        </div>
+      </div>
+
+      <div class="cic-card">
+        <div class="cic-icon">⏰</div>
+        <div class="cic-body">
+          <strong>Shop Hours</strong>
+          <span>7:00 AM – 10:00 PM<br>Open all days of the week</span>
+        </div>
+      </div>
+
+      <div class="cic-btns">
+        <a href="tel:+919910559158" class="cic-btn-call">📞 Call Now</a>
+        <a href="https://wa.me/919910559158" target="_blank" rel="noopener" class="cic-btn-wa">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17" style="flex-shrink:0" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          WhatsApp Us
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Right: Map Panel ── -->
+    <div class="contact-map-col">
+      <div class="contact-map-box">
+        <iframe
+          src="https://maps.google.com/maps?q=Brijwasi+Sweets+Corner+Surajpur+Greater+Noida+UP+201306&t=&z=16&ie=UTF8&iwloc=&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Brijwasi Sweets Corner — Surajpur, Greater Noida"></iframe>
+        <div class="contact-map-bar">
+          <span style="font-size:1.3rem;">📍</span>
+          <div style="flex:1;min-width:0;">
+            <strong>Brijwasi Sweets Corner</strong>
+            <span>Surajpur, Greater Noida · UP 201306</span>
+          </div>
+          <a href="https://share.google/fFUyDDzfoEQeFqvSR" target="_blank" rel="noopener" class="cic-link" style="white-space:nowrap;">Get Directions →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRINTABLE RECEIPT (hidden, shown only during print) -->
+<div id="printReceipt" class="print-receipt">
+  <div class="pr-header">
+    <div class="pr-logo">B</div>
+    <div>
+      <h2>Brijwasi Sweets Corner</h2>
+      <p>Bus Stop Lakhnawali Road, Dadri Main Rd, Surajpur, Greater Noida, UP 201306</p>
+      <p>📞 +91 99105 59158 &nbsp;|&nbsp; ✉️ info@brijwasisweetscorner.in</p>
+    </div>
+  </div>
+  <div class="pr-divider"></div>
+  <div class="pr-meta">
+    <div><strong>Customer:</strong> <span id="prName"></span></div>
+    <div><strong>Phone:</strong> <span id="prPhone"></span></div>
+    <div><strong>Date:</strong> <span id="prDate"></span></div>
+    <div><strong>Delivery:</strong> <span id="prType"></span></div>
+  </div>
+  <div class="pr-divider"></div>
+  <table class="pr-table">
+    <thead>
+      <tr><th style="text-align:left">Item</th><th>Qty</th><th>Rate</th><th style="text-align:right">Amount</th></tr>
+    </thead>
+    <tbody id="prItems"></tbody>
+    <tfoot>
+      <tr class="pr-total"><td colspan="3"><strong>Total / कुल</strong></td><td style="text-align:right" id="prTotal"></td></tr>
+    </tfoot>
+  </table>
+  <div class="pr-divider"></div>
+  <div class="pr-footer">
+    <p>🙏 Thank you for choosing Brijwasi Sweets Corner!</p>
+    <p style="font-size:10px;opacity:0.7;">शुद्धता हमारी पहचान · स्वाद जो याद रह जाए</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Brijwasi Sweets Corner<span>Surajpur, Greater Noida · UP 201306</span></div>
+  <div class="footer-tagline">शुद्धता हमारी पहचान, स्वाद जो याद रह जाए</div>
+  <div class="footer-copy">© 2025 Brijwasi Sweets Corner · Founded by Sh. Ramdev Upadhyay</div>
+</footer>
+
+<script src="js/menu-data.js"></script>
+<script src="js/app.js"></script>
+
+<!-- SIDE CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Your Cart</h3>
+    <button onclick="closeCart()" class="cart-close">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <!-- Items go here -->
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Subtotal</span><span id="cartSubtotal">₹0</span></div>
+    <button class="btn-primary w-100" onclick="proceedToCheckout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<div class="qv-overlay" id="qvOverlay" onclick="closeQV()">
+  <div class="qv-modal" onclick="event.stopPropagation()">
+    <button class="qv-close" onclick="closeQV()">&times;</button>
+    <div class="qv-content" id="qvContent"></div>
+  </div>
+</div>
+
+<!-- FLOATING CART BUTTON -->
+<button class="floating-cart-btn" onclick="openCart()">
+  🛒 <span id="cartCount">0</span>
+</button>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brijwasi Sweets Corner — Surajpur, Greater Noida</title>
+<meta name="description" content="Brijwasi Sweets Corner, Surajpur, Greater Noida — Family-owned authentic sweet shop founded by Sh. Ramdev Upadhyay. 20+ years of handcrafted sweets with pure desi ghee. Order Kaju Katli, Gulab Jamun, Barfi and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+Devanagari:wght@300;400;500&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- FESTIVAL OFFER BANNER -->
+<div class="fest-banner" id="festBanner">
+  <div class="fest-inner">
+    <span class="fest-sparkle">✨</span>
+    <span class="fest-text"><strong>Diwali Special!</strong> &nbsp;—&nbsp; Kaju Katli par <span class="fest-highlight">10% OFF</span> &nbsp;|&nbsp; Hurry, limited period offer! &nbsp;🪔🎉</span>
+    <span class="fest-sparkle">✨</span>
+  </div>
+  <button class="fest-close" onclick="closeBanner()" title="Close">&times;</button>
+</div>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a class="wa-float" href="index.html#" onclick="openWhatsApp(event)" title="Order on WhatsApp">
+  <svg class="wa-icon" viewBox="0 0 24 24" fill="currentColor" width="26" height="26" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-text">Order on WhatsApp</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html#" class="nav-logo">
+    <img src="images/logo.jpg" alt="Brijwasi Sweet Corner Logo" class="nav-logo-img">
+    <div class="nav-brand">Brijwasi Sweets Corner<span>Greater Noida · Est. 20+ Yrs</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#menu">Menu</a></li>
+    <li><a href="index.html#specials">Specials</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="index.html#giftcalc">Gift Box</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#order">Order</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <button class="lang-toggle" onclick="toggleLang()" id="langBtn" title="Translate / अनुवाद">अ/A</button>
+</nav>
+
+<div class="order-page-spacer"></div>
+<!-- ORDER FORM -->
+<section id="order" class="order-section fade-in">
+  <div class="section-header">
+    <div class="orn-divider"><span class="orn-dot">✦</span></div>
+    <h2 style="margin-top:1rem;">Place Your Order / ऑर्डर करें</h2>
+    <p>Bulk orders for events, weddings & festivals welcome</p>
+  </div>
+  <div class="order-wrap">
+    <div class="order-card">
+      <div class="order-head">
+        <div class="order-head-icon">B</div>
+        <div>
+          <h3>Order Form — ऑर्डर फॉर्म</h3>
+          <p>Fill in your details and items below</p>
+        </div>
+      </div>
+      <div class="order-body">
+
+        <!-- Customer Info -->
+        <div class="form-sec">
+          <div class="form-sec-label">👤 Customer Details</div>
+          <div class="form-row">
+            <div class="field"><label>Name / नाम *</label><input type="text" id="cname" placeholder="Aapka naam likhen"></div>
+            <div class="field"><label>Phone / फ़ोन *</label><input type="tel" id="cphone" placeholder="Mobile number"></div>
+            <div class="field form-full"><label>Address / पता (delivery ke liye)</label><textarea id="caddr" placeholder="Delivery address (optional)"></textarea></div>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- Occasion -->
+        <div class="form-sec">
+          <div class="form-sec-label">🎉 Occasion / अवसर</div>
+          <div class="occ-grid">
+            <div class="occ-chip" onclick="pickOcc(this)">Wedding<span class="occ-hindi">शादी</span></div>
+            <div class="occ-chip" onclick="pickOcc(this)">Festival<span class="occ-hindi">त्योहार</span></div>
+            <div class="occ-chip" onclick="pickOcc(this)">Birthday<span class="occ-hindi">जन्मदिन</span></div>
+            <div class="occ-chip" onclick="pickOcc(this)">Puja<span class="occ-hindi">पूजा</span></div>
+            <div class="occ-chip" onclick="pickOcc(this)">Gift<span class="occ-hindi">उपहार</span></div>
+            <div class="occ-chip" onclick="pickOcc(this)">Other<span class="occ-hindi">अन्य</span></div>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- Items -->
+        <div class="form-sec">
+          <div class="form-sec-label">🍬 Items / मिठाइयाँ</div>
+          <div class="items-table-head">
+            <span>Item</span><span>Qty</span><span style="text-align:right">Price</span><span></span>
+          </div>
+          <div class="items-list" id="itemsList"></div>
+          <button class="add-row-btn" onclick="addRow()">+ Add item / और मिठाई जोड़ें</button>
+          <div class="bill-box" id="billBox" style="display:none;">
+            <div id="billLines"></div>
+            <div class="bill-total"><span>Total / कुल राशि</span><span id="billTotal">₹0</span></div>
+          </div>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- Delivery -->
+        <div class="form-sec">
+          <div class="form-sec-label">🚚 Delivery / Pickup</div>
+          <div class="form-row">
+            <div class="field"><label>Date / तारीख</label><input type="date" id="deldate"></div>
+            <div class="field"><label>Type</label>
+              <select id="deltype">
+                <option value="pickup">Store Pickup — दुकान से लेना</option>
+                <option value="delivery">Home Delivery — घर पर</option>
+              </select>
+            </div>
+            <div class="field form-full"><label>Special Instructions / विशेष निर्देश</label>
+              <textarea id="notes" placeholder="Koi khaas baat (e.g. less sweet, gift wrap, packaging chahiye...)"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          <div style="font-size:2rem;margin-bottom:8px;">✅</div>
+          <h4>Order Submitted! — ऑर्डर मिल गया!</h4>
+          <p id="successDetail">Hum jald aapko contact karenge aapka order confirm karne ke liye.</p>
+        </div>
+
+        <button class="submit-btn" id="submitBtn" onclick="submitOrder()">
+          📦 &nbsp; Submit Order / ऑर्डर भेजें
+        </button>
+        <button class="print-btn" id="printBtn" onclick="printReceipt()" style="display:none;">
+          🖨️ &nbsp; Print Receipt / रसीद प्रिंट करें
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINTABLE RECEIPT (hidden, shown only during print) -->
+<div id="printReceipt" class="print-receipt">
+  <div class="pr-header">
+    <div class="pr-logo">B</div>
+    <div>
+      <h2>Brijwasi Sweets Corner</h2>
+      <p>Bus Stop Lakhnawali Road, Dadri Main Rd, Surajpur, Greater Noida, UP 201306</p>
+      <p>📞 +91 99105 59158 &nbsp;|&nbsp; ✉️ info@brijwasisweetscorner.in</p>
+    </div>
+  </div>
+  <div class="pr-divider"></div>
+  <div class="pr-meta">
+    <div><strong>Customer:</strong> <span id="prName"></span></div>
+    <div><strong>Phone:</strong> <span id="prPhone"></span></div>
+    <div><strong>Date:</strong> <span id="prDate"></span></div>
+    <div><strong>Delivery:</strong> <span id="prType"></span></div>
+  </div>
+  <div class="pr-divider"></div>
+  <table class="pr-table">
+    <thead>
+      <tr><th style="text-align:left">Item</th><th>Qty</th><th>Rate</th><th style="text-align:right">Amount</th></tr>
+    </thead>
+    <tbody id="prItems"></tbody>
+    <tfoot>
+      <tr class="pr-total"><td colspan="3"><strong>Total / कुल</strong></td><td style="text-align:right" id="prTotal"></td></tr>
+    </tfoot>
+  </table>
+  <div class="pr-divider"></div>
+  <div class="pr-footer">
+    <p>🙏 Thank you for choosing Brijwasi Sweets Corner!</p>
+    <p style="font-size:10px;opacity:0.7;">शुद्धता हमारी पहचान · स्वाद जो याद रह जाए</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Brijwasi Sweets Corner<span>Surajpur, Greater Noida · UP 201306</span></div>
+  <div class="footer-tagline">शुद्धता हमारी पहचान, स्वाद जो याद रह जाए</div>
+  <div class="footer-copy">© 2025 Brijwasi Sweets Corner · Founded by Sh. Ramdev Upadhyay</div>
+</footer>
+
+<script src="js/menu-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
