@@ -318,6 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.getElementById('gcPeople')) {
     calcGiftBox();
   }
+  if (document.querySelector('.reviews-grid')) {
+    renderReviews();
+  }
 });
 
 /* ============================================================
@@ -494,4 +497,124 @@ function lbNav(dir, event) {
 window.openLightbox = openLightbox;
 window.closeLightbox = closeLightbox;
 window.lbNav = lbNav;
+
+/* ============================================================
+   CUSTOMER REVIEWS SYSTEM
+   ============================================================ */
+const defaultReviews = [
+  { name: "Rajesh Sharma", location: "Alpha-1, Greater Noida", rating: 5, text: "Kaju Katli ekdam lajawaab! Shadion mein hamesha Brijwasi se hi lena padta hai. Quality aur taste dono mein koi compromise nahi.", avatarColor: "#7B1C2E" },
+  { name: "Priya Gupta", location: "Surajpur, Greater Noida", rating: 5, text: "Rasmalai itni soft aur fresh thi! Ramdev ji ke haath ka swad hi alag hai. My whole family's favourite mithai shop in Greater Noida.", avatarColor: "#9B2B40" },
+  { name: "Amit Verma", location: "Pari Chowk, Greater Noida", rating: 5, text: "Best Gulab Jamun I've ever tasted. Ekdum melts in mouth. Desi ghee ka swad hi kuch aur hota hai — must try once!", avatarColor: "#5C3317" },
+  { name: "Sunita Singh", location: "Knowledge Park, Greater Noida", rating: 5, text: "Diwali mein 20 kg ka bulk order diya tha. Packaging ekdum perfect, delivery on time. Sab log bahut khush the!", avatarColor: "#7B1C2E" },
+  { name: "Rohit Agarwal", location: "Sector Beta, Greater Noida", rating: 5, text: "Roz fresh mithai milti hai yahaan. Barfi aur Peda dono kamaal ke hain. Price bhi reasonable hai quality ke hisaab se!", avatarColor: "#C9923A" },
+  { name: "Kavita Mishra", location: "Dadri, Greater Noida", rating: 5, text: "Bete ki birthday pe Kaju Kalash li — sabne bohot tarif ki! Pure aur authentic taste. Will always order from here only.", avatarColor: "#4A0E1A" }
+];
+
+let currentRating = 5;
+
+function setRating(rating) {
+  currentRating = rating;
+  const ratingInput = document.getElementById('revRating');
+  if (ratingInput) ratingInput.value = rating;
+  
+  const stars = document.querySelectorAll('.star-rating .star');
+  stars.forEach((star, index) => {
+    if (index < rating) {
+      star.style.color = 'var(--gold)';
+    } else {
+      star.style.color = '#ccc';
+    }
+  });
+}
+
+function openReviewModal() {
+  const modal = document.getElementById('reviewOverlay');
+  if (modal) {
+    modal.style.display = 'flex';
+    setRating(5);
+  }
+}
+
+function closeReviewModal() {
+  const modal = document.getElementById('reviewOverlay');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+function submitReview(event) {
+  event.preventDefault();
+  const name = document.getElementById('revName').value.trim();
+  const location = document.getElementById('revLocation').value.trim();
+  const rating = parseInt(document.getElementById('revRating').value) || 5;
+  const text = document.getElementById('revText').value.trim();
+  
+  if (!name || !location || !text) return alert("Please fill in all fields.");
+
+  const colors = ["#7B1C2E", "#9B2B40", "#5C3317", "#C9923A", "#4A0E1A", "#8c1b2f", "#b33651"];
+  const avatarColor = colors[Math.floor(Math.random() * colors.length)];
+
+  const newReview = { name, location, rating, text, avatarColor };
+  
+  let customReviews = [];
+  try {
+    customReviews = JSON.parse(localStorage.getItem('brijwasiReviews')) || [];
+    customReviews.unshift(newReview);
+    localStorage.setItem('brijwasiReviews', JSON.stringify(customReviews));
+  } catch(e) {}
+
+  document.getElementById('reviewForm').reset();
+  setRating(5);
+  closeReviewModal();
+
+  renderReviews();
+  alert("Thank you for your beautiful review! ❤️");
+}
+
+function renderReviews() {
+  const grid = document.querySelector('.reviews-grid');
+  if (!grid) return;
+
+  let customReviews = [];
+  try { customReviews = JSON.parse(localStorage.getItem('brijwasiReviews')) || []; } catch(e) {}
+  const allReviews = [...customReviews, ...defaultReviews];
+
+  grid.innerHTML = allReviews.map(r => {
+    const initials = r.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    const starsStr = '★'.repeat(r.rating) + '☆'.repeat(5 - r.rating);
+    return `
+      <div class="review-card fade-in visible">
+        <div class="rc-header">
+          <div class="rc-avatar" style="background:${r.avatarColor}">${initials}</div>
+          <div class="rc-meta">
+            <div class="rc-name">${r.name}</div>
+            <div class="rc-location">📍 ${r.location}</div>
+          </div>
+          <div class="rc-stars" style="color:var(--gold); font-size:14px; letter-spacing:1px;">${starsStr}</div>
+        </div>
+        <p class="rc-text" style="color:var(--gold-pale); font-size:13px; line-height:1.6; opacity:0.85;">"${r.text}"</p>
+      </div>
+    `;
+  }).join('');
+
+  const scoreEl = document.querySelector('.rs-score');
+  const starsEl = document.querySelector('.rs-stars');
+  const countEl = document.getElementById('rsCount');
+
+  if (scoreEl && starsEl && countEl) {
+    const totalCount = allReviews.length;
+    const sumRatings = allReviews.reduce((sum, r) => sum + r.rating, 0);
+    const avgScore = (sumRatings / totalCount).toFixed(1);
+    
+    scoreEl.textContent = avgScore;
+    starsEl.textContent = '★'.repeat(Math.round(avgScore)) + '☆'.repeat(5 - Math.round(avgScore));
+    countEl.textContent = `${totalCount} happy reviews & counting`;
+  }
+}
+
+window.openReviewModal = openReviewModal;
+window.closeReviewModal = closeReviewModal;
+window.setRating = setRating;
+window.submitReview = submitReview;
+window.renderReviews = renderReviews;
 

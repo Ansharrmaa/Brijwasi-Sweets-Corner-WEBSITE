@@ -238,62 +238,22 @@ window.onerror = function(msg, url, lineNo, columnNo, error) {
     <h2 style="margin-top:1rem;">Customer Reviews / समीक्षाएं</h2>
     <p>Hamare pyaare grahak kya kehte hain — hear it from our regulars</p>
   </div>
-  <div class="reviews-summary">
-    <div class="rs-score">4.9</div>
+  <div class="reviews-summary" style="flex-wrap: wrap; justify-content: center; gap: 2.5rem;">
+    <div style="display: flex; align-items: center; gap: 1.2rem;">
+      <div class="rs-score">4.9</div>
+      <div>
+        <div class="rs-stars" id="rsStars">★★★★★</div>
+        <div class="rs-count" id="rsCount">200 happy reviews</div>
+      </div>
+    </div>
     <div>
-      <div class="rs-stars">★★★★★</div>
-      <div class="rs-count">200+ happy customers &amp; counting</div>
+      <button class="btn-primary" onclick="openReviewModal()" style="background: var(--gold); color: var(--maroon-dark); border: none; padding: 12px 24px; font-weight: 700; border-radius: 30px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 15px rgba(200,150,50,0.3); transition: all 0.2s;">
+        ⭐ Write a Review / समीक्षा लिखें
+      </button>
     </div>
   </div>
   <div class="reviews-grid">
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#7B1C2E">RS</div>
-        <div class="rc-meta"><div class="rc-name">Rajesh Sharma</div><div class="rc-location">📍 Alpha-1, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Kaju Katli ekdam lajawaab! Shadion mein hamesha Brijwasi se hi lena padta hai. Quality aur taste dono mein koi compromise nahi."</p>
-    </div>
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#9B2B40">PG</div>
-        <div class="rc-meta"><div class="rc-name">Priya Gupta</div><div class="rc-location">📍 Surajpur, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Rasmalai itni soft aur fresh thi! Ramdev ji ke haath ka swad hi alag hai. My whole family's favourite mithai shop in Greater Noida."</p>
-    </div>
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#5C3317">AV</div>
-        <div class="rc-meta"><div class="rc-name">Amit Verma</div><div class="rc-location">📍 Pari Chowk, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Best Gulab Jamun I've ever tasted. Ekdum melts in mouth. Desi ghee ka swad hi kuch aur hota hai — must try once!"</p>
-    </div>
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#7B1C2E">SS</div>
-        <div class="rc-meta"><div class="rc-name">Sunita Singh</div><div class="rc-location">📍 Knowledge Park, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Diwali mein 20 kg ka bulk order diya tha. Packaging ekdum perfect, delivery on time. Sab log bahut khush the!"</p>
-    </div>
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#C9923A">RA</div>
-        <div class="rc-meta"><div class="rc-name">Rohit Agarwal</div><div class="rc-location">📍 Sector Beta, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Roz fresh mithai milti hai yahaan. Barfi aur Peda dono kamaal ke hain. Price bhi reasonable hai quality ke hisaab se!"</p>
-    </div>
-    <div class="review-card">
-      <div class="rc-header">
-        <div class="rc-avatar" style="background:#4A0E1A">KM</div>
-        <div class="rc-meta"><div class="rc-name">Kavita Mishra</div><div class="rc-location">📍 Dadri, Greater Noida</div></div>
-        <div class="rc-stars">★★★★★</div>
-      </div>
-      <p class="rc-text">"Bete ki birthday pe Kaju Kalash li — sabne bohot tarif ki! Pure aur authentic taste. Will always order from here only."</p>
-    </div>
+    <!-- Populated dynamically via JS -->
   </div>
 </section>
 
@@ -521,6 +481,42 @@ window.onerror = function(msg, url, lineNo, columnNo, error) {
   <div class="qv-modal" onclick="event.stopPropagation()">
     <button class="qv-close" onclick="closeQV()">&times;</button>
     <div class="qv-content" id="qvContent"></div>
+  </div>
+</div>
+
+<!-- WRITE REVIEW MODAL -->
+<div class="qv-overlay" id="reviewOverlay" onclick="closeReviewModal()">
+  <div class="qv-modal" onclick="event.stopPropagation()" style="max-width: 500px; background: #fff; border-radius: 12px; border: 2px solid var(--gold); padding: 2rem;">
+    <button class="qv-close" onclick="closeReviewModal()" style="color: var(--maroon-dark); font-size: 28px; top: 10px; right: 15px;">&times;</button>
+    <h3 style="margin-top: 0; color: var(--maroon-dark); font-family: 'Playfair Display', serif; border-bottom: 2px solid var(--cream-dark); padding-bottom: 8px; font-size: 1.5rem;">⭐ Write a Review / समीक्षा लिखें</h3>
+    <form id="reviewForm" onsubmit="submitReview(event)" style="margin-top: 1.5rem;">
+      <div style="margin-bottom: 1.2rem;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); text-align: left;">Full Name / आपका नाम *</label>
+        <input type="text" id="revName" required placeholder="Enter your name" style="width: 100%; padding: 10px; border: 1px solid var(--cream-dark); border-radius: 6px; font-family: inherit;">
+      </div>
+      <div style="margin-bottom: 1.2rem;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); text-align: left;">Location / स्थान *</label>
+        <input type="text" id="revLocation" required placeholder="e.g. Surajpur, Greater Noida" style="width: 100%; padding: 10px; border: 1px solid var(--cream-dark); border-radius: 6px; font-family: inherit;">
+      </div>
+      <div style="margin-bottom: 1.2rem;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); text-align: left;">Rating / रेटिंग *</label>
+        <div class="star-rating" style="display: flex; gap: 8px; font-size: 28px; cursor: pointer; color: #ccc;">
+          <span onclick="setRating(1)" class="star" data-value="1" style="color: var(--gold);">★</span>
+          <span onclick="setRating(2)" class="star" data-value="2" style="color: var(--gold);">★</span>
+          <span onclick="setRating(3)" class="star" data-value="3" style="color: var(--gold);">★</span>
+          <span onclick="setRating(4)" class="star" data-value="4" style="color: var(--gold);">★</span>
+          <span onclick="setRating(5)" class="star" data-value="5" style="color: var(--gold);">★</span>
+        </div>
+        <input type="hidden" id="revRating" value="5" required>
+      </div>
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--text-dark); text-align: left;">Your Review / आपकी समीक्षा *</label>
+        <textarea id="revText" required placeholder="Write your review here..." rows="4" style="width: 100%; padding: 10px; border: 1px solid var(--cream-dark); border-radius: 6px; font-family: inherit; resize: vertical;"></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; background: var(--maroon-dark); color: #fff; border: none; font-weight: 700; border-radius: 6px; cursor: pointer; transition: background 0.2s;">
+        Submit Review / समीक्षा भेजें
+      </button>
+    </form>
   </div>
 </div>
 
